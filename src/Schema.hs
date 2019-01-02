@@ -1,19 +1,16 @@
-{-# LANGUAGE TemplateHaskell, QuasiQuotes, TypeFamilies, MultiParamTypeClasses,
-             EmptyDataDecls, FlexibleContexts, FlexibleInstances,
-             GADTs, GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE TemplateHaskell            #-} 
+{-# LANGUAGE QuasiQuotes                #-}
+{-# LANGUAGE TypeFamilies               #-}
+{-# LANGUAGE MultiParamTypeClasses      #-}
+{-# LANGUAGE EmptyDataDecls             #-}
+{-# LANGUAGE FlexibleContexts           #-}
+{-# LANGUAGE FlexibleInstances          #-}
+{-# LANGUAGE GADTs                      #-}
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}
+
 module Schema where
 
 import Database.Persist.TH
-
-{-
-recurring entry
-  id                   id
-  detail               text
-  isPercentage         boolean
-  isDebit              boolean
-  from  (month,year)   (int,int)
-  until (month,year)   Maybe (int,int)
--}
 
 share [mkPersist sqlSettings, mkMigrate "migrateAll"] [persistLowerCase|
 Entry json
